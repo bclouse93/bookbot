@@ -13,7 +13,7 @@ def get_book_text(path):
 # This is the main function where our program's logic will run.
 def main():
     if len(sys.argv) != 2:
-        print(f"Usage: python3 main.py <book_path>")
+        print(f"Usage: python3 main.py <path-to-book>")
         sys.exit(1)
     book_path = sys.argv[1]
     # Get the book's text and store it in the 'text' variable.
