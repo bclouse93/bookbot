@@ -13,7 +13,7 @@ def get_book_text(path):
 # This is the main function where our program's logic will run.
 def main():
     if len(sys.argv) != 2:
-        print("Usage: python3 main.py <book_path>")
+        print(f"Usage: python3 main.py <book_path>")
         sys.exit(1)
     book_path = sys.argv[1]
     # Get the book's text and store it in the 'text' variable.
@@ -22,12 +22,12 @@ def main():
     num_words = word_count(text)
     # Use the get_char_count function to count each character.
     char_counts = get_char_count(text)
-    # Get the character counts and sort them from highest to lowest.
+    # Get the character counts and sort them lsfrom highest to lowest.
     sorted_char_list = chars_dict_to_sorted_list(char_counts)
 
     # Start printing the report.
     print(f"============ BOOKBOT ============")
-    print("Analyzing book found at books/frankenstein.txt...")
+    print(f"Analyzing book found at {book_path}...")
     print("----------- Word Count ----------")
     print(f"Found {num_words} total words")
     print("--------- Character Count -------") # Print a blank line for spacing.
