@@ -32,7 +32,7 @@ def main():
     # Loop through each character in our sorted list.
     for item in sorted_char_list:
         # Print a line for each character, showing how many times it appeared.
-        print(f"{item['char']}:  {item['num']}")
+        print(f"{item['char']}: {item['num']}")
 
     # Print the end of the report.
     print("============= END ===============")
