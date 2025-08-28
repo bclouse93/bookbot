@@ -1,4 +1,5 @@
 # This line imports the functions we need from our other file, stats.py
+import sys
 from stats import word_count, get_char_count, chars_dict_to_sorted_list
 
 # This function takes a file path and returns all the text from that file.
@@ -11,8 +12,10 @@ def get_book_text(path):
 
 # This is the main function where our program's logic will run.
 def main():
-    # Set the location of the book we want to analyze.
-    book_path = "books/frankenstein.txt"
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <book_path>")
+        sys.exit(1)
+    book_path = sys.argv[1]
     # Get the book's text and store it in the 'text' variable.
     text = get_book_text(book_path)
     # Use the word_count function to count the words in the book.
