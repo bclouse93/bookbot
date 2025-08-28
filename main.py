@@ -1,16 +1,41 @@
-from stats import word_count
-from stats import get_char_count
-def get_book_text(books):
+# This line imports the functions we need from our other file, stats.py
+from stats import word_count, get_char_count, chars_dict_to_sorted_list
 
-    with open(books) as f:
-     file_contents = f.read()
-     return file_contents
-    
+# This function takes a file path and returns all the text from that file.
+def get_book_text(path):
+    # 'with open(...) as f:' is the recommended way to open files in Python.
+    # It automatically closes the file when you're done.
+    with open(path) as f:
+        # The .read() method reads the entire contents of the file into a string.
+        return f.read()
+
+# This is the main function where our program's logic will run.
 def main():
-   book_path = "books/frankenstein.txt"
-   book_text = get_book_text(book_path)
-   num_words = word_count(book_text)
-   num_chars = get_char_count(book_text)
-   print(f"{num_words} words found in the document")
-   print(num_chars)
+    # Set the location of the book we want to analyze.
+    book_path = "books/frankenstein.txt"
+    # Get the book's text and store it in the 'text' variable.
+    text = get_book_text(book_path)
+    # Use the word_count function to count the words in the book.
+    num_words = word_count(text)
+    # Use the get_char_count function to count each character.
+    char_counts = get_char_count(text)
+    # Get the character counts and sort them from highest to lowest.
+    sorted_char_list = chars_dict_to_sorted_list(char_counts)
+
+    # Start printing the report.
+    print(f"============ BOOKBOT ============")
+    print("Analyzing book found at books/frankenstein.txt...")
+    print("----------- Word Count ----------")
+    print(f"Found {num_words} total words")
+    print("--------- Character Count -------") # Print a blank line for spacing.
+
+    # Loop through each character in our sorted list.
+    for item in sorted_char_list:
+        # Print a line for each character, showing how many times it appeared.
+        print(f"{item['char']}:  {item['num']}")
+
+    # Print the end of the report.
+    print("============= END ===============")
+
+# This is the standard way to make a Python script runnable. It calls the main() function.
 main()
